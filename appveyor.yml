@@ -15,3 +15,5 @@ test_script:
   - ps: . .\appveyor.pester.ps1
 # Finalize pass - collect and upload results
   - ps: . .\appveyor.pester.ps1 -Finalize
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
